@@ -1,3 +1,5 @@
+console.log("[AdSkipper] 👉 content.js is running");
+
 const AD_BANNER_SELECTOR = '[data-testid="ad-banner"]';
 const SKIP_BUTTON_SELECTOR = '[data-testid="control-button-skip-forward"]';
 const AUDIO_TAG_SELECTOR = 'audio';
