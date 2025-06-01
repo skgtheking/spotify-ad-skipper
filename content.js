@@ -1,13 +1,22 @@
 console.log("[AdSkipper] 👉 content.js is running");
 
-const AD_BANNER_SELECTOR   = '[data-testid="ad-banner"]';
+const AD_BANNER_SELECTOR   = '[data-testid="context-item-info-ad-subtitle"]';
 const SKIP_BUTTON_SELECTOR = '[data-testid="control-button-skip-forward"]';
-const AUDIO_TAG_SELECTOR   = 'audio';
 
 let wasMutedByExtension = false;
 
+function getSpotifyAudioElement(){
+    // Try to grab audio from inside a <spotify-player> shadow root
+    const player = document.querySelector('spotify-player');
+    if(player && player.shadowRoot){
+        return player.shadowRoot.querySelector('audio');
+    }
+    // Fallback to any top-level <audio> if it exists
+    return document.querySelector('audio');
+}
+
 function muteSpotifyAudio(){
-    const audioEl = document.querySelector(AUDIO_TAG_SELECTOR);
+    const audioEl = getSpotifyAudioElement();
     if(audioEl && !audioEl.muted){
         audioEl.muted = true;
         wasMutedByExtension = true;
@@ -16,7 +25,7 @@ function muteSpotifyAudio(){
 }
 
 function unmuteSpotifyAudio(){
-    const audioEl = document.querySelector(AUDIO_TAG_SELECTOR);
+    const audioEl = getSpotifyAudioElement();
     if(audioEl && wasMutedByExtension){
         audioEl.muted = false;
         wasMutedByExtension = false;
