@@ -1,8 +1,8 @@
 console.log("[AdSkipper] 👉 content.js is running");
 
-const AD_BANNER_SELECTOR = '[data-testid="ad-banner"]';
+const AD_BANNER_SELECTOR   = '[data-testid="ad-banner"]';
 const SKIP_BUTTON_SELECTOR = '[data-testid="control-button-skip-forward"]';
-const AUDIO_TAG_SELECTOR = 'audio';
+const AUDIO_TAG_SELECTOR   = 'audio';
 
 let wasMutedByExtension = false;
 
@@ -17,7 +17,7 @@ function muteSpotifyAudio(){
 
 function unmuteSpotifyAudio(){
     const audioEl = document.querySelector(AUDIO_TAG_SELECTOR);
-    if(audioEl && audioEl.muted){
+    if(audioEl && wasMutedByExtension){
         audioEl.muted = false;
         wasMutedByExtension = false;
         console.log('Spotify audio unmuted by extension.');
@@ -40,9 +40,7 @@ function checkForAdAndHandle(){
     if(isAdPlaying()){
         muteSpotifyAudio();
         clickSkipButton();
-    }
-
-    else{
+    } else {
         unmuteSpotifyAudio();
     }
 }

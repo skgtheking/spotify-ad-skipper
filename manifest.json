@@ -1,17 +1,17 @@
 {
-  "manifest_version": 3,
-  "name": "Spotify Ad Skipper & Muter",
-  "description": "Automatically mutes or skips audio ads on open.spotify.com",
-  "version": "1.0",
-  "permissions": [],
-  "host_permissions": [
-    "https://open.spotify.com/*"
-  ],
-  "content_scripts": [
-    {
-      "matches": ["https://open.spotify.com/*"],
-      "js": ["content.js"],
-      "run_at": "document_idle"
-    }
-  ]
+    "manifest_version": 3,
+    "name": "Spotify Ad Skipper & Muter",
+    "description": "Automatically mutes or skips audio ads on open.spotify.com",
+    "version": "1.0",
+    "permissions": [],
+    "host_permissions": [
+        "https://open.spotify.com/*"
+    ],
+    "content_scripts": [
+        {
+            "matches": ["https://open.spotify.com/*"],
+            "js": ["content.js"],
+            "run_at": "document_idle"
+        }
+    ]
 }
